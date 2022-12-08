@@ -2,6 +2,10 @@
     padding: 0;
 }
 
+.container-fluid .row {
+    margin: 0;
+}
+
 /* NavBar */
 
 .navbar {
@@ -143,4 +147,15 @@ ul.messages li {
 
 .auth-card {
     margin-bottom: 30px;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.p-form-accounts {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
