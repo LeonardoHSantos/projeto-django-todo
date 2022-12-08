@@ -83,10 +83,16 @@ span > a:hover {
     font-size: 20px;
     height: 50px;
     padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-bottom: 1px solid #ccc;
 }
 
-.fas.fa-trash, .fas.fa-edit {
+.task-item.done {
+    background-color: #CCC;
+}
+
+.fas.fa-trash, .fas.fa-edit, .fas.fa-check {
     cursor: pointer;
     margin: 5px;
     font-size: 20px;
@@ -98,6 +104,12 @@ span > a:hover {
 }
 .fas.fa-edit {
     color: #13c43f;
+}
+.fas.fa-check {
+    color: #CCC;
+}
+.done .fas.fa-check {
+    color: #3476e2;
 }
 
 
@@ -159,3 +171,4 @@ ul.messages li {
     margin-left: auto;
     margin-right: auto;
 }
+
