@@ -7,17 +7,27 @@ from tasks.models import Task
 from .forms import TaskForm
 from django.contrib import messages
 
+import datetime
+
 
 @login_required
 def taskList(request):
 
     search = request.GET.get('search')
+    # filter = request.GET.get('filter')
+    taskDoneRecently = Task.objects.filter(
+        done='done', update_at__gt=datetime.datetime.now() - datetime.timedelta(days=30),
+        user=request.user
+    ).count()
+
+    taskDone = Task.objects.filter(done='done', user=request.user).count()
+    taskDoing = Task.objects.filter(done='doing', user=request.user).count()
 
     if search:
         tasks = Task.objects.filter(title__icontains=search, user=request.user)
     
-        if len(tasks) == 0:
-            print(search)
+    # elif filter:
+    #     tasks = Task.objects.filter(title__icontains=search, user=request.user)
     
     else:
         tasks_list = Task.objects.all().order_by('-created_at').filter(user=request.user)
@@ -25,7 +35,13 @@ def taskList(request):
         page = request.GET.get('page')
         tasks = paginator.get_page(page)
     
-    return render(request, 'tasks/list.html', {'tasks': tasks})
+    return render(request, 'tasks/list.html',
+    {
+        'tasks': tasks,
+        'taskRecently': taskDoneRecently,
+        'taskDone': taskDone,
+        'taskDoing': taskDoing
+    })
 
 
 @login_required
