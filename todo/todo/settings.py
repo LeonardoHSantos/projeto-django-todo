@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 
 from pathlib import Path
-import conn_db
+# import conn_db
 import os
 
 
@@ -85,14 +85,14 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': conn_db.DATABASE,
-        'USER': conn_db.USER_DB,
-        'PASSWORD': conn_db.PASSWORD,
-        'HOST': conn_db.HOST,
-        'PORT': conn_db.PORT,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': conn_db.DATABASE,
+        # 'USER': conn_db.USER_DB,
+        # 'PASSWORD': conn_db.PASSWORD,
+        # 'HOST': conn_db.HOST,
+        # 'PORT': conn_db.PORT,
     }
 }
 
